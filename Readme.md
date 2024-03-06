@@ -36,8 +36,8 @@ This script automates the build process and execution of the application.
 ./start.sh 10 3 5 --rackAware 0,r1 1,r3 2,r3 3,r2 4,r2 5,r1
 ```
 
-#### This example simulates replica assignment for 3 partitions, a replication factor of 4, and 6 brokers with specified rack information.
-and displays the following:
+#### This example simulates replica assignment for 3 partitions, a replication factor of 4, and 6 brokers with specified rack information and displays the following:
+```
 Configuration:
 ---------------
 numPartitions: 3
@@ -74,12 +74,14 @@ Rack: r2
 |p1      |p1      |        |
 |p2      |p2      |        |
 
-
+```
 #### An example without Rack Awareness:
 ```
 ./start.sh 10 3 5
 ```
-will display:
+This will display:
+
+```
 Configuration:
 ---------------
 numPartitions: 10
@@ -115,7 +117,7 @@ Rack: default-rack
 |p8      |p8      |p8      |        |        |
 |        |p9      |p9      |p9      |        |
 
-
+```
 ## Implementation Details
 
 The program, `SimulateReplicasAssignment`, processes the input parameters to simulate the assignment of Kafka replicas either with or without rack awareness based on the provided arguments. 
