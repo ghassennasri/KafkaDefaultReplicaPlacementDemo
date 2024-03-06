@@ -73,9 +73,7 @@ public class SimulateReplicasAssignment{
         // Placeholder for the actual AdminUtils call
         Map<Integer, List<Integer>> assignment = AdminUtils.assignReplicasToBrokers(brokerMetadatas, nPartitions,
                 replicationFactor);
-        assignment.forEach((partitionId, replicas) -> {replicas.sort( Comparator.naturalOrder());logger.info("Partition {} -> Replicas: {}", partitionId, replicas);
-
-        }   );
+        assignment.forEach((partitionId, replicas) -> logger.info("Partition {} -> Replicas: {}", partitionId, replicas));
         formatAndDisplayAssignment(assignment, brokerMetadatas);
     }
 
