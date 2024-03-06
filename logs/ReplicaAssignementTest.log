@@ -1,0 +1,791 @@
+
+With Rack Awareness:
+Partition 0 -> Replicas: [0, 2, 4]
+Partition 1 -> Replicas: [0, 2, 3]
+Partition 2 -> Replicas: [0, 1, 3]
+Partition 3 -> Replicas: [1, 3, 5]
+Partition 4 -> Replicas: [1, 4, 5]
+Partition 5 -> Replicas: [2, 4, 5]
+Partition 6 -> Replicas: [0, 1, 3]
+Partition 7 -> Replicas: [1, 3, 5]
+Partition 8 -> Replicas: [1, 4, 5]
+Partition 9 -> Replicas: [2, 4, 5]
+
+Rack: r1
++--------+--------+
+|broker 0|broker 5|
++--------+--------+
+|p0      |        |
+|p1      |        |
+|p2      |        |
+|        |p3      |
+|        |p4      |
+|        |p5      |
+|p6      |        |
+|        |p7      |
+|        |p8      |
+|        |p9      |
+
+Rack: r3
++--------+--------+
+|broker 1|broker 2|
++--------+--------+
+|        |p0      |
+|        |p1      |
+|p2      |        |
+|p3      |        |
+|p4      |        |
+|        |p5      |
+|p6      |        |
+|p7      |        |
+|p8      |        |
+|        |p9      |
+
+Rack: r2
++--------+--------+
+|broker 3|broker 4|
++--------+--------+
+|        |p0      |
+|p1      |        |
+|p2      |        |
+|p3      |        |
+|        |p4      |
+|        |p5      |
+|p6      |        |
+|p7      |        |
+|        |p8      |
+|        |p9      |
+Configuration:
+numPartitions: 10
+replicationFactor: 3
+numBrokers: 5
+Rack Awareness: true
+0,r1
+1,r3
+2,r3
+3,r2
+4,r2
+5,r1
+
+With Rack Awareness:
+Partition 0 -> Replicas: [0, 1, 3]
+Partition 1 -> Replicas: [1, 3, 5]
+Partition 2 -> Replicas: [1, 4, 5]
+Partition 3 -> Replicas: [2, 4, 5]
+Partition 4 -> Replicas: [0, 2, 4]
+Partition 5 -> Replicas: [0, 2, 3]
+Partition 6 -> Replicas: [0, 2, 3]
+Partition 7 -> Replicas: [0, 1, 3]
+Partition 8 -> Replicas: [1, 3, 5]
+Partition 9 -> Replicas: [1, 4, 5]
+
+Rack: r1
++--------+--------+
+|broker 0|broker 5|
++--------+--------+
+|p0      |        |
+|        |p1      |
+|        |p2      |
+|        |p3      |
+|p4      |        |
+|p5      |        |
+|p6      |        |
+|p7      |        |
+|        |p8      |
+|        |p9      |
+
+Rack: r3
++--------+--------+
+|broker 1|broker 2|
++--------+--------+
+|p0      |        |
+|p1      |        |
+|p2      |        |
+|        |p3      |
+|        |p4      |
+|        |p5      |
+|        |p6      |
+|p7      |        |
+|p8      |        |
+|p9      |        |
+
+Rack: r2
++--------+--------+
+|broker 3|broker 4|
++--------+--------+
+|p0      |        |
+|p1      |        |
+|        |p2      |
+|        |p3      |
+|        |p4      |
+|p5      |        |
+|p6      |        |
+|p7      |        |
+|p8      |        |
+|        |p9      |
+Configuration:
+numPartitions: 10
+replicationFactor: 3
+numBrokers: 5
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r3
+Broker 2 -> Rack: r3
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r1
+
+With Rack Awareness:
+Partition 0 -> Replicas: [2, 4, 5]
+Partition 1 -> Replicas: [0, 2, 4]
+Partition 2 -> Replicas: [0, 2, 3]
+Partition 3 -> Replicas: [0, 1, 3]
+Partition 4 -> Replicas: [1, 3, 5]
+Partition 5 -> Replicas: [1, 4, 5]
+Partition 6 -> Replicas: [0, 2, 3]
+Partition 7 -> Replicas: [0, 1, 3]
+Partition 8 -> Replicas: [1, 3, 5]
+Partition 9 -> Replicas: [1, 4, 5]
+
+Rack: r1
++--------+--------+
+|broker 0|broker 5|
++--------+--------+
+|        |p0      |
+|p1      |        |
+|p2      |        |
+|p3      |        |
+|        |p4      |
+|        |p5      |
+|p6      |        |
+|p7      |        |
+|        |p8      |
+|        |p9      |
+
+Rack: r3
++--------+--------+
+|broker 1|broker 2|
++--------+--------+
+|        |p0      |
+|        |p1      |
+|        |p2      |
+|p3      |        |
+|p4      |        |
+|p5      |        |
+|        |p6      |
+|p7      |        |
+|p8      |        |
+|p9      |        |
+
+Rack: r2
++--------+--------+
+|broker 3|broker 4|
++--------+--------+
+|        |p0      |
+|        |p1      |
+|p2      |        |
+|p3      |        |
+|p4      |        |
+|        |p5      |
+|p6      |        |
+|p7      |        |
+|p8      |        |
+|        |p9      |
+Configuration:
+---------------
+numPartitions: 10
+replicationFactor: 3
+numBrokers: 5
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r3
+Broker 2 -> Rack: r3
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r1
+---------------
+
+With Rack Awareness:
+Partition 0 -> Replicas: [0, 1, 3]
+Partition 1 -> Replicas: [1, 3, 5]
+Partition 2 -> Replicas: [1, 4, 5]
+Partition 3 -> Replicas: [2, 4, 5]
+Partition 4 -> Replicas: [0, 2, 4]
+Partition 5 -> Replicas: [0, 2, 3]
+Partition 6 -> Replicas: [1, 4, 5]
+Partition 7 -> Replicas: [2, 4, 5]
+Partition 8 -> Replicas: [0, 2, 4]
+Partition 9 -> Replicas: [0, 2, 3]
+
+Rack: r1
++--------+--------+
+|broker 0|broker 5|
++--------+--------+
+|p0      |        |
+|        |p1      |
+|        |p2      |
+|        |p3      |
+|p4      |        |
+|p5      |        |
+|        |p6      |
+|        |p7      |
+|p8      |        |
+|p9      |        |
+
+Rack: r3
++--------+--------+
+|broker 1|broker 2|
++--------+--------+
+|p0      |        |
+|p1      |        |
+|p2      |        |
+|        |p3      |
+|        |p4      |
+|        |p5      |
+|p6      |        |
+|        |p7      |
+|        |p8      |
+|        |p9      |
+
+Rack: r2
++--------+--------+
+|broker 3|broker 4|
++--------+--------+
+|p0      |        |
+|p1      |        |
+|        |p2      |
+|        |p3      |
+|        |p4      |
+|p5      |        |
+|        |p6      |
+|        |p7      |
+|        |p8      |
+|p9      |        |
+Configuration:
+---------------
+numPartitions: 10
+replicationFactor: 3
+numBrokers: 5
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r3
+Broker 2 -> Rack: r3
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r1
+---------------
+Simulating Replica Assignment for 10 partitions, replication factor of 3 and 5 brokers
+
+With Rack Awareness:
+Partition 0 -> Replicas: [1, 4, 5]
+Partition 1 -> Replicas: [2, 4, 5]
+Partition 2 -> Replicas: [0, 2, 4]
+Partition 3 -> Replicas: [0, 2, 3]
+Partition 4 -> Replicas: [0, 1, 3]
+Partition 5 -> Replicas: [1, 3, 5]
+Partition 6 -> Replicas: [0, 1, 3]
+Partition 7 -> Replicas: [1, 3, 5]
+Partition 8 -> Replicas: [1, 4, 5]
+Partition 9 -> Replicas: [2, 4, 5]
+
+Rack: r1
++--------+--------+
+|broker 0|broker 5|
++--------+--------+
+|        |p0      |
+|        |p1      |
+|p2      |        |
+|p3      |        |
+|p4      |        |
+|        |p5      |
+|p6      |        |
+|        |p7      |
+|        |p8      |
+|        |p9      |
+
+Rack: r3
++--------+--------+
+|broker 1|broker 2|
++--------+--------+
+|p0      |        |
+|        |p1      |
+|        |p2      |
+|        |p3      |
+|p4      |        |
+|p5      |        |
+|p6      |        |
+|p7      |        |
+|p8      |        |
+|        |p9      |
+
+Rack: r2
++--------+--------+
+|broker 3|broker 4|
++--------+--------+
+|        |p0      |
+|        |p1      |
+|        |p2      |
+|p3      |        |
+|p4      |        |
+|p5      |        |
+|p6      |        |
+|p7      |        |
+|        |p8      |
+|        |p9      |
+Configuration:
+---------------
+numPartitions: 10
+replicationFactor: 3
+numBrokers: 5
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r3
+Broker 2 -> Rack: r3
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r1
+---------------
+Simulating Replica Assignment for 10 partitions, replication factor of 3 and 5 brokers
+
+With Rack Awareness:
+Partition 0 -> Replicas: [0, 1, 4]
+Partition 1 -> Replicas: [2, 3, 5]
+Partition 2 -> Replicas: [0, 1, 4]
+Partition 3 -> Replicas: [2, 3, 5]
+Partition 4 -> Replicas: [0, 1, 4]
+Partition 5 -> Replicas: [2, 3, 5]
+Partition 6 -> Replicas: [0, 2, 3]
+Partition 7 -> Replicas: [0, 1, 3]
+Partition 8 -> Replicas: [1, 3, 5]
+Partition 9 -> Replicas: [1, 4, 5]
+
+Rack: r1
++--------+--------+
+|broker 0|broker 5|
++--------+--------+
+|p0      |        |
+|        |p1      |
+|p2      |        |
+|        |p3      |
+|p4      |        |
+|        |p5      |
+|p6      |        |
+|p7      |        |
+|        |p8      |
+|        |p9      |
+
+Rack: r3
++--------+--------+
+|broker 1|broker 2|
++--------+--------+
+|p0      |        |
+|        |p1      |
+|p2      |        |
+|        |p3      |
+|p4      |        |
+|        |p5      |
+|        |p6      |
+|p7      |        |
+|p8      |        |
+|p9      |        |
+
+Rack: r2
++--------+--------+
+|broker 3|broker 4|
++--------+--------+
+|        |p0      |
+|p1      |        |
+|        |p2      |
+|p3      |        |
+|        |p4      |
+|p5      |        |
+|p6      |        |
+|p7      |        |
+|p8      |        |
+|        |p9      |
+Configuration:
+---------------
+numPartitions: 10
+replicationFactor: 3
+numBrokers: 5
+Rack Awareness: false
+---------------
+Simulating Replica Assignment for 10 partitions, replication factor of 3 and 5 brokers
+Without Rack Awareness:
+Partition 0 -> Replicas: [1, 2, 4]
+Partition 1 -> Replicas: [0, 2, 3]
+Partition 2 -> Replicas: [1, 3, 4]
+Partition 3 -> Replicas: [0, 2, 4]
+Partition 4 -> Replicas: [0, 1, 3]
+Partition 5 -> Replicas: [2, 3, 4]
+Partition 6 -> Replicas: [0, 3, 4]
+Partition 7 -> Replicas: [0, 1, 4]
+Partition 8 -> Replicas: [0, 1, 2]
+Partition 9 -> Replicas: [1, 2, 3]
+
+Rack: default-rack
++--------+--------+--------+--------+--------+
+|broker 0|broker 1|broker 2|broker 3|broker 4|
++--------+--------+--------+--------+--------+
+|        |p0      |p0      |        |p0      |
+|p1      |        |p1      |p1      |        |
+|        |p2      |        |p2      |p2      |
+|p3      |        |p3      |        |p3      |
+|p4      |p4      |        |p4      |        |
+|        |        |p5      |p5      |p5      |
+|p6      |        |        |p6      |p6      |
+|p7      |p7      |        |        |p7      |
+|p8      |p8      |p8      |        |        |
+|        |p9      |p9      |p9      |        |
+Configuration:
+---------------
+numPartitions: 10
+replicationFactor: 3
+numBrokers: 5
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r3
+Broker 2 -> Rack: r3
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r1
+---------------
+Simulating Replica Assignment for 10 partitions, replication factor of 3 and 5 brokers
+
+With Rack Awareness:
+Partition 0 -> Replicas: [0, 1, 3]
+Partition 1 -> Replicas: [1, 3, 5]
+Partition 2 -> Replicas: [1, 4, 5]
+Partition 3 -> Replicas: [2, 4, 5]
+Partition 4 -> Replicas: [0, 2, 4]
+Partition 5 -> Replicas: [0, 2, 3]
+Partition 6 -> Replicas: [0, 2, 4]
+Partition 7 -> Replicas: [0, 2, 3]
+Partition 8 -> Replicas: [0, 1, 3]
+Partition 9 -> Replicas: [1, 3, 5]
+
+Rack: r1
++--------+--------+
+|broker 0|broker 5|
++--------+--------+
+|p0      |        |
+|        |p1      |
+|        |p2      |
+|        |p3      |
+|p4      |        |
+|p5      |        |
+|p6      |        |
+|p7      |        |
+|p8      |        |
+|        |p9      |
+
+Rack: r3
++--------+--------+
+|broker 1|broker 2|
++--------+--------+
+|p0      |        |
+|p1      |        |
+|p2      |        |
+|        |p3      |
+|        |p4      |
+|        |p5      |
+|        |p6      |
+|        |p7      |
+|p8      |        |
+|p9      |        |
+
+Rack: r2
++--------+--------+
+|broker 3|broker 4|
++--------+--------+
+|p0      |        |
+|p1      |        |
+|        |p2      |
+|        |p3      |
+|        |p4      |
+|p5      |        |
+|        |p6      |
+|p7      |        |
+|p8      |        |
+|p9      |        |
+Configuration:
+---------------
+numPartitions: 10
+replicationFactor: 3
+numBrokers: 5
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r3
+Broker 2 -> Rack: r3
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r1
+---------------
+Simulating Replica Assignment for 10 partitions, replication factor of 3 and 5 brokers
+
+With Rack Awareness:
+Partition 0 -> Replicas: [0, 1, 4]
+Partition 1 -> Replicas: [2, 3, 5]
+Partition 2 -> Replicas: [0, 1, 4]
+Partition 3 -> Replicas: [2, 3, 5]
+Partition 4 -> Replicas: [0, 1, 4]
+Partition 5 -> Replicas: [2, 3, 5]
+Partition 6 -> Replicas: [2, 4, 5]
+Partition 7 -> Replicas: [0, 2, 4]
+Partition 8 -> Replicas: [0, 2, 3]
+Partition 9 -> Replicas: [0, 1, 3]
+
+Rack: r1
++--------+--------+
+|broker 0|broker 5|
++--------+--------+
+|p0      |        |
+|        |p1      |
+|p2      |        |
+|        |p3      |
+|p4      |        |
+|        |p5      |
+|        |p6      |
+|p7      |        |
+|p8      |        |
+|p9      |        |
+
+Rack: r3
++--------+--------+
+|broker 1|broker 2|
++--------+--------+
+|p0      |        |
+|        |p1      |
+|p2      |        |
+|        |p3      |
+|p4      |        |
+|        |p5      |
+|        |p6      |
+|        |p7      |
+|        |p8      |
+|p9      |        |
+
+Rack: r2
++--------+--------+
+|broker 3|broker 4|
++--------+--------+
+|        |p0      |
+|p1      |        |
+|        |p2      |
+|p3      |        |
+|        |p4      |
+|p5      |        |
+|        |p6      |
+|        |p7      |
+|p8      |        |
+|p9      |        |
+Configuration:
+---------------
+numPartitions: 3
+replicationFactor: 3
+numBrokers: 6
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r1
+Broker 2 -> Rack: r1
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r2
+---------------
+Simulating Replica Assignment for 3 partitions, replication factor of 3 and 6 brokers
+
+With Rack Awareness:
+Partition 0 -> Replicas: [1, 3, 4]
+Partition 1 -> Replicas: [1, 2, 4]
+Partition 2 -> Replicas: [2, 4, 5]
+
+Rack: r1
++--------+--------+--------+
+|broker 0|broker 1|broker 2|
++--------+--------+--------+
+|        |p0      |        |
+|        |p1      |p1      |
+|        |        |p2      |
+
+Rack: r2
++--------+--------+--------+
+|broker 3|broker 4|broker 5|
++--------+--------+--------+
+|p0      |p0      |        |
+|        |p1      |        |
+|        |p2      |p2      |
+Configuration:
+---------------
+numPartitions: 3
+replicationFactor: 4
+numBrokers: 6
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r1
+Broker 2 -> Rack: r1
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r2
+---------------
+Simulating Replica Assignment for 3 partitions, replication factor of 4 and 6 brokers
+
+With Rack Awareness:
+Partition 0 -> Replicas: [0, 2, 3, 5]
+Partition 1 -> Replicas: [0, 1, 3, 5]
+Partition 2 -> Replicas: [0, 1, 3, 4]
+
+Rack: r1
++--------+--------+--------+
+|broker 0|broker 1|broker 2|
++--------+--------+--------+
+|p0      |        |p0      |
+|p1      |p1      |        |
+|p2      |p2      |        |
+
+Rack: r2
++--------+--------+--------+
+|broker 3|broker 4|broker 5|
++--------+--------+--------+
+|p0      |        |p0      |
+|p1      |        |p1      |
+|p2      |p2      |        |
+Configuration:
+---------------
+numPartitions: 3
+replicationFactor: 4
+numBrokers: 6
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r1
+Broker 2 -> Rack: r1
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r2
+---------------
+Simulating Replica Assignment for 3 partitions, replication factor of 4 and 6 brokers
+
+With Rack Awareness:
+Partition 0 -> Replicas: [1, 2, 4, 5]
+Partition 1 -> Replicas: [0, 2, 4, 5]
+Partition 2 -> Replicas: [0, 2, 3, 5]
+
+Rack: r1
++--------+--------+--------+
+|broker 0|broker 1|broker 2|
++--------+--------+--------+
+|        |p0      |p0      |
+|p1      |        |p1      |
+|p2      |        |p2      |
+
+Rack: r2
++--------+--------+--------+
+|broker 3|broker 4|broker 5|
++--------+--------+--------+
+|        |p0      |p0      |
+|        |p1      |p1      |
+|p2      |        |p2      |
+Configuration:
+---------------
+numPartitions: 3
+replicationFactor: 4
+numBrokers: 6
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r1
+Broker 2 -> Rack: r1
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r2
+---------------
+Simulating Replica Assignment for 3 partitions, replication factor of 4 and 6 brokers
+
+With Rack Awareness:
+Partition 0 -> Replicas: [0, 2, 4, 5]
+Partition 1 -> Replicas: [0, 2, 3, 5]
+Partition 2 -> Replicas: [0, 1, 3, 5]
+
+Rack: r1
++--------+--------+--------+
+|broker 0|broker 1|broker 2|
++--------+--------+--------+
+|p0      |        |p0      |
+|p1      |        |p1      |
+|p2      |p2      |        |
+
+Rack: r2
++--------+--------+--------+
+|broker 3|broker 4|broker 5|
++--------+--------+--------+
+|        |p0      |p0      |
+|p1      |        |p1      |
+|p2      |        |p2      |
+Configuration:
+---------------
+numPartitions: 3
+replicationFactor: 4
+numBrokers: 6
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r1
+Broker 2 -> Rack: r1
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r2
+---------------
+Simulating Replica Assignment for 3 partitions, replication factor of 4 and 6 brokers
+
+With Rack Awareness:
+Partition 0 -> Replicas: [0, 1, 3, 5]
+Partition 1 -> Replicas: [0, 1, 3, 4]
+Partition 2 -> Replicas: [1, 2, 3, 4]
+
+Rack: r1
++--------+--------+--------+
+|broker 0|broker 1|broker 2|
++--------+--------+--------+
+|p0      |p0      |        |
+|p1      |p1      |        |
+|        |p2      |p2      |
+
+Rack: r2
++--------+--------+--------+
+|broker 3|broker 4|broker 5|
++--------+--------+--------+
+|p0      |        |p0      |
+|p1      |p1      |        |
+|p2      |p2      |        |
+Configuration:
+---------------
+numPartitions: 3
+replicationFactor: 4
+numBrokers: 6
+Rack Awareness: true
+Broker 0 -> Rack: r1
+Broker 1 -> Rack: r1
+Broker 2 -> Rack: r1
+Broker 3 -> Rack: r2
+Broker 4 -> Rack: r2
+Broker 5 -> Rack: r2
+---------------
+Simulating Replica Assignment for 3 partitions, replication factor of 4 and 6 brokers
+
+With Rack Awareness:
+Partition 0 -> Replicas: [0, 1, 3, 5]
+Partition 1 -> Replicas: [0, 1, 3, 4]
+Partition 2 -> Replicas: [1, 2, 3, 4]
+
+Rack: r1
++--------+--------+--------+
+|broker 0|broker 1|broker 2|
++--------+--------+--------+
+|p0      |p0      |        |
+|p1      |p1      |        |
+|        |p2      |p2      |
+
+Rack: r2
++--------+--------+--------+
+|broker 3|broker 4|broker 5|
++--------+--------+--------+
+|p0      |        |p0      |
+|p1      |p1      |        |
+|p2      |p2      |        |
